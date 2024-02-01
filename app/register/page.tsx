@@ -1,5 +1,7 @@
 'use client'
 
+import React, { useState } from 'react'
+import axios from 'axios'
 import {
   TextInput,
   PasswordInput,
@@ -14,7 +16,22 @@ import classes from './RegisterPage.module.css'
 import GlobalConfig from '../app.config.js'
 
 export default function RegisterPage() {
-  let api = GlobalConfig.RegisterApi
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleClick = async () => {
+    try {
+      const response = await axios.post(GlobalConfig.RegisterApi, {
+        email,
+        username,
+        password,
+      })
+      console.log(response.data)
+    } catch (error) {
+      console.error('Error during API call', error)
+    }
+  }
 
   return (
     <Container size={420} my={40}>
@@ -28,15 +45,26 @@ export default function RegisterPage() {
         </Anchor>
       </Text>
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Email" placeholder="you@mantine.dev" required />
-        <TextInput label="Username" placeholder="username" required />
+        <TextInput
+          label="Email"
+          placeholder="you@mantine.dev"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <TextInput
+          label="Username"
+          placeholder="username"
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
         <PasswordInput
           label="Password"
           placeholder="Your password"
+          onChange={(e) => setPassword(e.target.value)}
           required
           mt="md"
         />
-        <Button fullWidth mt="xl">
+        <Button fullWidth mt="xl" onClick={handleClick}>
           Register
         </Button>
       </Paper>

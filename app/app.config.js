@@ -1,6 +1,4 @@
 module.exports = {
-  server: 'localhost:8000',
-
-  LoginApi: this.server + '/news/login/',
-  RegisterApi: this.server + '/news/sign_up/',
+  LoginApi: 'http://localhost:8000/api/news/login/',
+  RegisterApi: 'http://localhost:8000/api/news/sign_up/',
 }
