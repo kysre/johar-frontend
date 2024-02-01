@@ -23,7 +23,6 @@ export default function LoginPage() {
 
   const handleClick = async () => {
     try {
-      console.log('API call to', api)
       const response = await axios.post(GlobalConfig.LoginApi, {
         username,
         password,
