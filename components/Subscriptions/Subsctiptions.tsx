@@ -14,6 +14,7 @@ import "../../app/globals.css";
 
 export function Subscriptions() {
   return (
+    <div id="Home">
       <Container fluid style={{ margin: "50px" }}>
         <Title className={styles.title}>Subscriptions</Title>
         <Space h="sm" />
@@ -26,5 +27,6 @@ export function Subscriptions() {
           <AgencyElementSimple />
         </Flex>
       </Container>
+    </div>
   );
 }

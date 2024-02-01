@@ -5,14 +5,15 @@ import { Suggestions } from "@/components/Suggestions/Suggestions";
 import { Categories } from "@/components/Category/Categories";
 import { TrendingNews } from "@/components/TrendingNews/TrendingNews";
 import { Flex, Title } from "@mantine/core";
+import { Header } from "@/components/Header/Header";
 export default function Landing() {
   return (
-    <div style={{display:'flex',flexDirection: 'column'}}>
-        <Subscriptions />
-        <Categories />
-        <TrendingNews/>
-        <Suggestions />
-        
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <Header />
+      <Subscriptions />
+      <Categories />
+      <TrendingNews />
+      <Suggestions />
     </div>
   );
 }
