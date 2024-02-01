@@ -1,7 +1,7 @@
 import { Avatar, Paper } from "@mantine/core";
 import React from "react";
 
-const AgencyElementWithSubs = () => {
+const AgencyElementWithSubs = ({ imageUrl, username, subs}) => {
     const paperStyle = {
       display: 'flex',
       flexDirection: 'column',
@@ -15,9 +15,9 @@ const AgencyElementWithSubs = () => {
   
     return (
       <Paper style={paperStyle}>
-        <Avatar radius="xl" size="xl" style={{ marginBottom: '16px' }} />
-        <text style={{ margin: '0' }}>Abbas</text>
-        <text style={{ margin: '0' }}>Subscriptions: 256</text>
+        <Avatar src={imageUrl} radius="xl" size="xl" style={{ marginBottom: '16px' }} />
+        <text style={{ margin: '0' }}>{username}</text>
+        <text style={{ margin: '0' }}>Subscriptions: {subs}</text>
       </Paper>
     );
   };

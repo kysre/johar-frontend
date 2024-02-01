@@ -2,6 +2,7 @@ const CategoryElement = ({ imageUrl, text }) => {
     const containerStyle = {
       position: 'relative',
       display: 'inline-block',
+      padding: '5px'
     };
   
     const imageStyle = {

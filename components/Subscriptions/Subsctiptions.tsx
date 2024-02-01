@@ -17,16 +17,7 @@ export function Subscriptions() {
       <Container fluid style={{ margin: "50px" }}>
         <Title className={styles.title}>Subscriptions</Title>
         <Space h="sm" />
-        <Flex
-          mih={50}
-          bg="rgb(255,255,255)"
-          align="center"
-          wrap="wrap"
-          direction={{ base: "column", sm: "row" }}
-          // w={"max-content"}
-          justify={"space-around"}
-          display={"flex"}
-        >
+        <Flex className={styles.flexContainer}>
           <AgencyElementSimple />
           <AgencyElementSimple />
           <AgencyElementSimple />
