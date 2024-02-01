@@ -5,7 +5,7 @@ import AgencyElementWithSubs from "../AgencyElement/AgencyElementWithSubs";
 export function Suggestions() {
   return (
     <div id="Suggestions">
-      <Container fluid h={50} style={{ margin: "50px" }}>
+      <Container fluid style={{ margin: "50px" }}>
         <Title className={styles.title}>Suggestions</Title>
         <Space h="sm" />
         <Flex className={styles.flexContainer}>
