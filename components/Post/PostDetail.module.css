@@ -80,4 +80,16 @@
 .icon img {
     width: 20px; /* Set the width of the icons */
     height: 20px; /* Set the height of the icons */
+
+    margin-right: 20px;
+    margin-left: 5px;
+}
+
+.info {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+
+
+
 }

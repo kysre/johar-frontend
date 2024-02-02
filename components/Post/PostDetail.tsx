@@ -46,12 +46,13 @@ const PostDetail: React.FC<Post> = ({ post, reactions }) => {
                     </div>
                     <div className={classes.right}>
                         <div className={classes.icon}>
-                            <img src="https://tse4.mm.bing.net/th?id=OIP.e6IckBEOEHuCKMW8DEQfEgHaGa&pid=Api&P=0&h=180" alt="Like Icon"/>
                             <span>{reactions.likes}</span>
+                            <img src="http://cdn.onlinewebfonts.com/svg/img_86166.png" alt="Like Icon"/>
                         </div>
                         <div className={classes.icon}>
-                            <img src="https://tse4.mm.bing.net/th?id=OIP.lKr0x5AEsyu8S1V6epzmMAHaHC&pid=Api&P=0&h=180" alt="Dislike Icon"/>
                             <span>{reactions.dislikes}</span>
+                            <img src="https://tse4.mm.bing.net/th?id=OIP.lKr0x5AEsyu8S1V6epzmMAHaHC&pid=Api&P=0&h=180"
+                                 alt="Dislike Icon"/>
                         </div>
                     </div>
                 </div>

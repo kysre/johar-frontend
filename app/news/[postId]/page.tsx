@@ -1,4 +1,7 @@
 import React from 'react';
+
+import axios from 'axios'
+
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import CommentSection from '@/components/Comment/CommentSection';
@@ -8,7 +11,7 @@ import RootLayout from "@/app/layout";
 import {Container, Paper} from "@mantine/core";
 import classes from './PostPage.module.css'
 import GlobalConfig from '@/app/app.config.js'
-
+import SeeAlso from "@/components/Post/SeeAlso";
 
 
 // @ts-ignore
@@ -20,16 +23,8 @@ export default async function PostPage({ params }) {
     }
     else{
         const reactions = await fetchPostReactions(params.postId);
-        // todo get comments and related posts
-        //const comments = await fetchPostComments(params.postId);
-        const comments = [
-            { id: '1', subscriber: 'John Doe', text: 'This is a great comment!', created_time: '2024-01-30',photo: 'https://tse1.mm.bing.net/th?id=OIP.w6Cs6qz234c71XloeqKdwgHaHa&pid=Api&P=0&h=180' },
-            { id: '2', subscriber: 'Jane Smith', text: 'I agree with John!', created_time: '2024-01-31', photo: 'https://tse1.mm.bing.net/th?id=OIP.w6Cs6qz234c71XloeqKdwgHaHa&pid=Api&P=0&h=180' },
-        ];
-        const relatedPosts: any = [ {id:'123123412423', title:'related1', content:'salam dafsfgsdfnhsdngsdbrdxgfbwrthwtnwsdvnsgnsnsgddngsh', imageSrc:'https://tse1.mm.bing.net/th?id=OIP.ez6SppsgN-4VGZFOLWGw6gHaE7&pid=Api&P=0&h=180'},
-                                    {id:'QZ5WFAHlA2Me', title:'related2', content:'salam afdbsdgbsgdhsdvnsfgdnwrfgnsfgnrsdgnsrgtnswbgtrbji', imageSrc:'https://tse1.mm.bing.net/th?id=OIP.1IeDGhHEZK4sESLtt0YirgHaHa&pid=Api&P=0&h=180'},
-                                    {id:'QZ5WFAp6oPe1', title:'related2', content:'salamdsgbsfgnfhnsmnetsdty srtnsrynsrngysrygnbsrnbwsrnb abji', imageSrc:'https://tse1.mm.bing.net/th?id=OIP.1IeDGhHEZK4sESLtt0YirgHaHa&pid=Api&P=0&h=180'}];
-
+        const comments = await fetchPostComments(params.postId);
+        const relatedPosts = await fetchPostSuggestions(params.postId);
         return (
             <RootLayout>
                 <Container>
@@ -39,15 +34,19 @@ export default async function PostPage({ params }) {
                 </Container>
                 <Container>
                     <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+                        <SeeAlso posts={relatedPosts}>
+                        </SeeAlso>
+                    </Paper>
+                </Container>
+                <Container>
+                    <Paper withBorder shadow="md" p={30} mt={30} radius="md">
                         <CommentSection comments={comments} />
                     </Paper>
                 </Container>
             </RootLayout>
         );
+
     }
-
-
-
 };
 
 const getStaticPaths: GetStaticPaths = async () => {
@@ -68,37 +67,77 @@ const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const fetchPostData = async (postId: string) => {
-    const response = await fetch('http://127.0.0.1:8000/news/' + postId);
-    const post = await response.json();
-    if (post.status =='ok'){
-        if (post.news.image == null){
-            post.news.image = 'https://tse2.mm.bing.net/th?id=OIF.gSLkiZ%2bIHy48LBtMi0qx6g&pid=Api&P=0&h=180';
-        }
-        return post.news;
-    }
-    return false;
+    try{
+        const response = await axios.get(GlobalConfig.PostDetailApi + postId);
+        const post = await response.data;
 
+
+        if (post.status =='ok'){
+            if (post.news.image == null){
+                post.news.image = 'https://i.pinimg.com/236x/0a/62/39/0a6239f18a9e0381dd04efe3661d3da2.jpg';
+            }
+            return post.news;
+        }
+        return false;
+    } catch (error){
+        console.error('Error during API call', error)
+    }
 };
 
 const fetchPostReactions = async (postId: string) =>{
-    const response = await fetch('http://127.0.0.1:8000/news/feedback/' + postId + '/reaction');
-    const reactions = await response.json();
-    let likes = 0;
-    let dislikes = 0;
-    for (const reaction of reactions.reactions){
-        if (reaction.reactionType == 'like'){
-            likes += 1;
+    try {
+        const response = await axios.get(GlobalConfig.FeedbackApi + postId + '/reaction');
+        const reactions = await response.data;
+        let likes = 0;
+        let dislikes = 0;
+        for (const reaction of reactions.reactions){
+            if (reaction.reactionType == 'like'){
+                likes += 1;
+            }
+            else{
+                dislikes += 1;
+            }
+            //todo check if user reacts post
         }
-        else{
-            dislikes += 1;
-        }
-        //todo check if user reacts post
+        return {likes: likes, dislikes: dislikes};
+    } catch (error){
+        console.error('Error during API call', error)
+        return {likes: 0, dislikes: 0};
     }
-    return {likes: likes, dislikes: dislikes};
+
 };
 
 const fetchPostComments = async (postId: string) =>{
-    const response = await fetch('http://127.0.0.1:8000/news/feedback/' + postId + '/comment');
-    const comments = await response.json();
-    return comments.comments;
+    try{
+        const response = await axios.get(GlobalConfig.FeedbackApi + postId + '/comment');
+        const comments = await response.data;
+        return comments.comments;
+    } catch (error){
+        console.error('Error during API call', error)
+
+    }
 }
+
+const fetchPostSuggestions = async (postId: string) =>{
+    try{
+        const response = await axios.get(GlobalConfig.PostSuggestionApi + postId);
+        const posts = await response.data;
+        console.log(posts);
+
+        if (posts.status =='ok'){
+            for (const news of posts.news) {
+                if (news.image == null) {
+                    news.image = 'https://i.pinimg.com/236x/0a/62/39/0a6239f18a9e0381dd04efe3661d3da2.jpg';
+                }
+                if (news.description.length > 30){
+                    news.description = news.description.substring(0, 30);
+                }
+            }
+            console.log(posts);
+        }
+        return posts.news;
+    } catch (error){
+        console.error('Error during API call', error)
+    }
+}
+

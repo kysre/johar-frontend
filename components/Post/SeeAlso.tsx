@@ -4,10 +4,17 @@ import React from 'react';
 import Post from './Post';
 import {Container, Group, Title, Paper} from '@mantine/core';
 import classes from "@/components/Post/SeeAlso.module.css";
+import {number} from "prop-types";
 
 
 interface RelatedPostsProps {
-    posts: {id: string, title: string; content: string; imageSrc: string }[];
+    posts: {
+        token: string;
+        author: string;
+        title: string;
+        description: string;
+        image: string;
+    }[]
 }
 
 const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
@@ -19,8 +26,8 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
             </Title>
             <Group className={classes.group}>
                 {posts.map((post, index) => (
-                    <Post key={index} id={post.id} title={post.title} content={post.content} imageSrc={post.imageSrc} />
-                ))}
+                    <Post key ={index} token={post.token} author={post.author} title={post.title} description={post.description} image={post.image}/>
+                    ))}
             </Group>
         </Container>
     );
