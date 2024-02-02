@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios, { isAxiosError } from 'axios'
 import { useCookies } from 'react-cookie'
 import {
   TextInput,
@@ -13,8 +13,10 @@ import {
   Container,
   Button,
 } from '@mantine/core'
+import { notifications } from '@mantine/notifications'
 import classes from './LoginPage.module.css'
 import GlobalConfig from '../app.config.js'
+import { redirectToLanding } from './actions'
 
 export default function LoginPage() {
   const [username, setUsername] = useState('')
@@ -29,9 +31,23 @@ export default function LoginPage() {
       })
       const token = response.data.token
       setCookie('token', token, { path: '/' })
+      notifications.show({
+        title: 'Success',
+        message: response.data.message,
+        color: 'green',
+      })
       console.log(token)
+      redirectToLanding()
     } catch (error) {
-      console.error('Error during API call', error)
+      if (!isAxiosError(error)) {
+        console.error('Error during API call', error)
+        return
+      }
+      notifications.show({
+        title: 'Error',
+        message: error.response?.data?.message ?? 'An error occurred',
+        color: 'red',
+      })
     }
   }
 
