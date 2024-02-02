@@ -21,7 +21,7 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
 
     return (
         <Container>
-            <Title ta="left" className={classes.title}>
+            <Title ta="center" className={classes.title} style={{marginBottom: '20px'}}>
                 See Also
             </Title>
             <Group className={classes.group}>

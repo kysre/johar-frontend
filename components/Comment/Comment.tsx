@@ -11,7 +11,7 @@ interface CommentProps {
 }
 const Comment: React.FC<CommentProps> = ({author, content, date, photo}) => {
     return(
-        <Paper withBorder radius="md" className={classes.comment}>
+        <Paper withBorder radius="md" className={classes.comment} style={{marginBottom: '10px'}}>
             <Group>
                 <Avatar
                     src={photo}
