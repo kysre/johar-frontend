@@ -18,6 +18,7 @@ interface CommentSectionProps {
 }
 
 const CommentSection: React.FC<CommentSectionProps> = ({ comments }) => {
+
     return (
         <Container>
             <h2 style={{ textAlign: 'center', marginBottom: 20 }}>Comments</h2>
@@ -29,6 +30,8 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments }) => {
                     photo='https://tse3.mm.bing.net/th?id=OIP.AkKR5-4AJhHTNNDMp0NxvQAAAA&pid=Api&P=0&h=180'
                  />
             ))}
+
+            <AddCommentForm onSubmit={()=>{return null}}></AddCommentForm>
         </Container>
     );
 };
