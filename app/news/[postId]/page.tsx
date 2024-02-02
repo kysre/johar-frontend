@@ -4,22 +4,23 @@ import axios from 'axios'
 
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import CommentSection from '@/components/Comment/CommentSection';
-import PostDetail from '@/components/Post/PostDetail';
+
 import AddCommentForm from '@/components/Comment/AddCommentForm';
 import RootLayout from "@/app/layout";
 import {Container, Paper} from "@mantine/core";
 import classes from './PostPage.module.css'
 import GlobalConfig from '@/app/app.config.js'
 import SeeAlso from "@/components/Post/SeeAlso";
-
+import CommentSection from '@/components/Comment/CommentSection';
+import PostDetail from '@/components/Post/PostDetail';
+import NotFoundImage from '@/components/Error/NotFound'
 
 // @ts-ignore
 export default async function PostPage({ params }) {
     let post:any = {title:'s', content: 'string', imageSrc: 'string', writer: 'string', date: 'string'}
     post = await fetchPostData(params.postId);
     if (!post) {
-        return <p>Loading...</p>; // Add proper loading state
+        return <NotFoundImage/>; // Add proper loading state
     }
     else{
         const reactions = await fetchPostReactions(params.postId);
@@ -32,12 +33,23 @@ export default async function PostPage({ params }) {
                         <PostDetail post={post} reactions={reactions}></PostDetail>
                     </Paper>
                 </Container>
+
+
+                <Container>
+                    <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+
+                    </Paper>
+                </Container>
+
+
                 <Container>
                     <Paper withBorder shadow="md" p={30} mt={30} radius="md">
                         <SeeAlso posts={relatedPosts}>
                         </SeeAlso>
                     </Paper>
                 </Container>
+
+
                 <Container>
                     <Paper withBorder shadow="md" p={30} mt={30} radius="md">
                         <CommentSection comments={comments} />
@@ -71,10 +83,13 @@ const fetchPostData = async (postId: string) => {
         const response = await axios.get(GlobalConfig.PostDetailApi + postId);
         const post = await response.data;
 
-
+        console.log(post)
         if (post.status =='ok'){
             if (post.news.image == null){
                 post.news.image = 'https://i.pinimg.com/236x/0a/62/39/0a6239f18a9e0381dd04efe3661d3da2.jpg';
+            }
+            else{
+                post.news.image = 'http://localhost:8000/' + post.news.image;
             }
             return post.news;
         }
