@@ -5,6 +5,7 @@ import Comment from './Comment';
 import AddCommentForm from "@/components/Comment/AddCommentForm"; // Assuming Comment component is in the same directory
 
 interface CommentData {
+    id: number;
     subscriber: {
         username: string;
         email: string;
@@ -18,12 +19,16 @@ interface CommentSectionProps {
 }
 
 const CommentSection: React.FC<CommentSectionProps> = ({ comments }) => {
-
+    let key= 0;
+    for (const comment of comments){
+        comment.id = key;
+    }
     return (
         <Container>
             <h2 style={{ textAlign: 'center', marginBottom: 20 }}>Comments</h2>
             {comments.map((comment) => (
                 <Comment
+                    key = {comment.id}
                     author={comment.subscriber.username}
                     content={comment.text}
                     date={comment.created_time}
