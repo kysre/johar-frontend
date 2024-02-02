@@ -8,6 +8,7 @@ import '@mantine/dropzone/styles.css'
 // import '@mantine/modals/styles.css'
 
 import { MantineProvider, ColorSchemeScript } from '@mantine/core'
+import { Notifications } from '@mantine/notifications'
 
 export const metadata = {
   title: 'My Mantine app',
@@ -25,7 +26,10 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <Notifications />
+          {children}
+        </MantineProvider>
       </body>
     </html>
   )
