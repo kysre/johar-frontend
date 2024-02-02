@@ -20,8 +20,10 @@
     "@tiptap/extension-link": "^2.1.13",
     "@tiptap/react": "^2.1.13",
     "@tiptap/starter-kit": "^2.1.13",
+    "axios": "^1.6.7",
     "next": "14.0.4",
     "react": "^18",
+    "react-cookie": "^7.0.2",
     "react-dom": "^18"
   },
   "devDependencies": {
