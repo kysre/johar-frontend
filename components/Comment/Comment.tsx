@@ -4,7 +4,6 @@ import classes from './CommentHtml.module.css';
 
 
 interface CommentProps {
-    id: string;
     author: string;
     content: string;
     date: string;
