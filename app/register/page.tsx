@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import axios from 'axios'
+import axios, { isAxiosError } from 'axios'
 import {
   TextInput,
   PasswordInput,
@@ -12,8 +12,10 @@ import {
   Container,
   Button,
 } from '@mantine/core'
+import { notifications } from '@mantine/notifications'
 import classes from './RegisterPage.module.css'
 import GlobalConfig from '../app.config.js'
+import { redirectToLogin } from './actions'
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('')
@@ -27,9 +29,22 @@ export default function RegisterPage() {
         username,
         password,
       })
-      console.log(response.data)
+      notifications.show({
+        title: 'Success',
+        message: 'You have successfully registered.',
+        color: 'green',
+      })
+      redirectToLogin()
     } catch (error) {
-      console.error('Error during API call', error)
+      if (!isAxiosError(error)) {
+        console.error('Error during API call', error)
+        return
+      }
+      notifications.show({
+        title: 'Error',
+        message: error.response?.data?.message ?? 'An error occurred',
+        color: 'red',
+      })
     }
   }
 
