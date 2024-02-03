@@ -1,0 +1,18 @@
+.title {
+
+    font-size: var(--font-size-xl);
+    letter-spacing: 0.1px;
+
+    color: var(--color-dimgray-200);
+    display: flex;
+  }
+
+  .flexContainer {
+    min-height: 25px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    display: flex;
+  }
