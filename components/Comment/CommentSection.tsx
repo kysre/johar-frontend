@@ -1,4 +1,6 @@
 'use client'
+
+
 import { Container } from '@mantine/core';
 import React from 'react';
 import Comment from './Comment';
@@ -16,9 +18,10 @@ interface CommentData {
 
 interface CommentSectionProps {
     comments: CommentData[];
+    PostId: string;
 }
 
-const CommentSection: React.FC<CommentSectionProps> = ({ comments }) => {
+const CommentSection: React.FC<CommentSectionProps> = ({ comments, PostId }) => {
     let key= 0;
     for (const comment of comments){
         comment.id = key;
@@ -36,7 +39,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments }) => {
                  />
             ))}
 
-            <AddCommentForm onSubmit={()=>{return null}}></AddCommentForm>
+            <AddCommentForm postId={PostId}></AddCommentForm>
         </Container>
     );
 };

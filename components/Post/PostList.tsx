@@ -8,6 +8,7 @@ import {number} from "prop-types";
 
 
 interface RelatedPostsProps {
+    title: string;
     posts: {
         token: string;
         author: string;
@@ -17,12 +18,12 @@ interface RelatedPostsProps {
     }[]
 }
 
-const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts }) => {
+const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts, title }) => {
 
     return (
         <Container>
             <Title ta="center" className={classes.title} style={{marginBottom: '20px'}}>
-                See Also
+                {title}
             </Title>
             <Group className={classes.group}>
                 {posts.map((post, index) => (

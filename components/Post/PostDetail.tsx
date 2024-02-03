@@ -1,6 +1,9 @@
+'use client'
+
+
 import React from 'react';
 import Post from './Post';
-import RelatedPosts from './SeeAlso';
+import RelatedPosts from './PostList';
 import { Container, Title, Text, Image } from '@mantine/core';
 import {number} from "prop-types";
 import classes from './PostDetail.module.css'

@@ -1,3 +1,6 @@
+'use client'
+
+
 import { Image, Container, Title, Text, Button, SimpleGrid } from '@mantine/core';
 import image from '../../public/NotFound.svg';
 import classes from './NotFound.module.css';

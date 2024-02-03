@@ -1,27 +1,53 @@
-import React from 'react';
-import { Container, Paper, Image, Title, Button } from '@mantine/core';
+'use client'
+
+
+import { Card, Text, Group, Center, rem, useMantineTheme } from '@mantine/core';
+import classes from './Agency.module.css';
 
 interface AgencyProps {
+    agency: {
     name: string;
-    photoSrc: string;
-    onSubscribe: () => void;
+    image: string;
+    description: string;
+    }
 }
 
-const Agency: React.FC<AgencyProps> = ({ name, photoSrc, onSubscribe }) => {
+const Agency: React.FC<AgencyProps> = ({ agency }) => {
     return (
-        <Container>
-            <Paper shadow="xs" radius="md">
-                <div style={{ textAlign: 'center' }}>
-                    <Image src={photoSrc} alt={`${name} Logo`} width={150} height={150} radius="md" />
-                    <Title order={4} style={{ marginTop: 10 }}>
-                        {name}
-                    </Title>
-                    <Button onClick={onSubscribe} style={{ marginTop: 10 }}>
-                        Subscribe
-                    </Button>
+
+    <Card
+            p="lg"
+            shadow="lg"
+            className={classes.card}
+            radius="md"
+            component="a"
+            //todo fix address
+            href="https://mantine.dev/"
+            target="_blank"
+        >
+            <div
+                className={classes.image}
+                style={{
+                    backgroundImage:
+                        'url(' + agency.image +')',
+                }}
+            />
+            <div className={classes.overlay} />
+
+            <div className={classes.content}>
+                <div>
+                    <Text size="lg" className={classes.title} fw={500}>
+                        {agency.name}
+                    </Text>
+
+                    <Group justify="space-between" gap="xs">
+                        <Text size="sm" className={classes.author}>
+                            {agency.description}
+                        </Text>
+                    </Group>
                 </div>
-            </Paper>
-        </Container>
+            </div>
+        </Card>
     );
 };
 

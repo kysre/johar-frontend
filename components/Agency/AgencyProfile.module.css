@@ -1,0 +1,92 @@
+.blogWrap {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.blog-goBack {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: #a9a9a9;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    display: block;
+}
+.blogWrap header {
+    text-align: center;
+}
+
+.blogDate {
+    font-size: 0.8rem;
+    color: #a9a9a9;
+    font-weight: 500;
+}
+
+.blogWrap img {
+    width: 100%;
+}
+
+.blogSubCategory {
+    display: flex;
+    justify-content: center;
+}
+.blogSubCategory > div {
+    margin: 1rem;
+}
+.blogDesc {
+    padding: 1rem;
+    margin-top: 1.5rem;
+}
+
+.chip {
+    font-size: 0.7rem;
+    background: linear-gradient(to right, #6190e8, #a7bfe8);
+    color: #fff;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    width: fit-content;
+    text-transform: capitalize;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    /*border: 1px solid #ddd;  Add a border for better visibility */
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.left img {
+    width: 50px; /* Set the width of the image */
+    height: 50px; /* Set the height of the image */
+    border-radius: 50%; /* Make the image round */
+    margin-right: 10px; /* Add some spacing between image and text */
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 5px; /* Add some spacing between icons and numbers */
+
+}
+
+.icon img {
+    width: 20px; /* Set the width of the icons */
+    height: 20px; /* Set the height of the icons */
+
+    margin-right: 20px;
+    margin-left: 5px;
+}
+
+.info {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.3em;
+    font-weight: bold;
+}
