@@ -1,12 +1,15 @@
 'use client'
 
-import { Container, Paper, Input, Button, Group } from '@mantine/core'
-import React, { useState } from 'react'
-import axios from 'axios'
+import { Container, Paper, Input, Button, Group } from '@mantine/core';
+import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
 import GlobalConfig from '@/app/app.config.js'
 
+
 interface NewCommentFormProps {
-  onSubmit: (newComment: { content: string }) => void
+    postId: string;
+    onSubmit: (newComment: { content: string }) => void
 }
 
 const AddCommentForm: React.FC<NewCommentFormProps> = () => {

@@ -1,8 +1,11 @@
+'use client'
+
+
 import React from 'react'
 import Post from './Post'
-import RelatedPosts from './SeeAlso'
-import { Container, Title, Text, Image } from '@mantine/core'
-import { number } from 'prop-types'
+import RelatedPosts from './PostList'
+import { Container, Title, Text, Image } from '@mantine/core';
+import {number} from 'prop-types'
 import classes from './PostDetail.module.css'
 interface Post {
   post: {
@@ -20,6 +23,7 @@ interface Post {
     dislikes: number
   }
 }
+
 
 const PostDetail: React.FC<Post> = ({ post, reactions }) => {
   return (

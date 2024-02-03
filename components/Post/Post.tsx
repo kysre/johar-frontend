@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import { Container, Image, Title, Text, Group } from '@mantine/core'
+import { Container, Image, Title, Text, Group} from '@mantine/core'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 
 interface PostProps {
   token: string
@@ -26,9 +26,9 @@ const Post: React.FC<PostProps> = (post: PostProps) => {
           </div>
           <div style={{ flex: 1 }}>
             <Title order={2} style={{ marginBottom: 10 }}>
-              {post.title}
+              {post.title.substring(0, 20)+'...'}
             </Title>
-            <Text>{post.description}</Text>
+            <Text>{post.description.substring(0, 40)+'...'}</Text>
           </div>
         </Group>
       </Container>
@@ -37,3 +37,4 @@ const Post: React.FC<PostProps> = (post: PostProps) => {
 }
 
 export default Post
+
