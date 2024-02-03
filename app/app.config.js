@@ -16,5 +16,4 @@ module.exports = {
 
   AgencyDetailApi: 'http://localhost:8000/api/news/agency/',
   AgencyDetailApiSSR: 'http://backend:8000/api/news/agency/',
-
 }

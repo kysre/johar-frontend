@@ -1,25 +1,22 @@
 'use client'
-
-import React from 'react';
-import Post from './Post';
-import {Container, Group, Title, Paper} from '@mantine/core';
-import classes from "@/components/Post/SeeAlso.module.css";
-import {number} from "prop-types";
+import React from 'react'
+import Post from './Post'
+import {Container, Group, Title, Paper} from '@mantine/core'
+import classes from '@/components/Post/SeeAlso.module.css'
 
 
 interface RelatedPostsProps {
-    title: string;
+    title: string
     posts: {
-        token: string;
-        author: string;
-        title: string;
-        description: string;
-        image: string;
+        token: string
+        author: string
+        title: string
+        description: string
+        image: string
     }[]
 }
 
 const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts, title }) => {
-
     return (
         <Container>
             <Title ta="center" className={classes.title} style={{marginBottom: '20px'}}>
@@ -34,4 +31,4 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts, title }) => {
     );
 };
 
-export default RelatedPosts;
+export default RelatedPosts

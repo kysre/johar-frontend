@@ -1,14 +1,13 @@
 'use client'
-
-import { Container, Paper, Input, Button, Group } from '@mantine/core';
-import React, { useState } from 'react';
-import { useCookies } from 'react-cookie';
-import axios from "axios";
+import { Container, Paper, Input, Button, Group } from '@mantine/core'
+import React, { useState } from 'react'
+import { useCookies } from 'react-cookie'
+import axios from 'axios'
 import GlobalConfig from '@/app/app.config.js'
 
 
 interface NewCommentFormProps {
-    postId: string;
+    postId: string
 }
 
 const AddCommentForm: React.FC<NewCommentFormProps> = (PostId) => {
@@ -28,12 +27,12 @@ const AddCommentForm: React.FC<NewCommentFormProps> = (PostId) => {
                 });
                 //todo
             } catch (error){
-                console.error('Error during API call', error);
+                console.error('Error during API call', error)
             }
             // Reset the form after submission
-            setContent('');
+            setContent('')
         }
-    };
+    }
 
     return (
         <Container style={{ width: '100%'}}>
@@ -53,7 +52,8 @@ const AddCommentForm: React.FC<NewCommentFormProps> = (PostId) => {
                 </form>
             </Paper>
         </Container>
-    );
-};
+    )
+}
 
-export default AddCommentForm;
+export default AddCommentForm
+

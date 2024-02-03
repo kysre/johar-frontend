@@ -1,30 +1,30 @@
 'use client'
 
 
-import { Container } from '@mantine/core';
-import React from 'react';
-import Comment from './Comment';
-import AddCommentForm from "@/components/Comment/AddCommentForm"; // Assuming Comment component is in the same directory
+import { Container } from '@mantine/core'
+import React from 'react'
+import Comment from './Comment'
+import AddCommentForm from '@/components/Comment/AddCommentForm'
 
 interface CommentData {
-    id: number;
+    id: number
     subscriber: {
-        username: string;
-        email: string;
+        username: string
+        email: string
     };
-    text: string;
-    created_time: string;
+    text: string
+    created_time: string
 }
 
 interface CommentSectionProps {
-    comments: CommentData[];
-    PostId: string;
+    comments: CommentData[]
+    PostId: string
 }
 
 const CommentSection: React.FC<CommentSectionProps> = ({ comments, PostId }) => {
-    let key= 0;
+    let key= 0
     for (const comment of comments){
-        comment.id = key;
+        comment.id = key
     }
     return (
         <Container>
@@ -41,7 +41,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ comments, PostId }) => 
 
             <AddCommentForm postId={PostId}></AddCommentForm>
         </Container>
-    );
-};
+    )
+}
 
-export default CommentSection;
+export default CommentSection

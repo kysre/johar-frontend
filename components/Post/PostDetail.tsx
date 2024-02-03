@@ -1,25 +1,22 @@
 'use client'
-
-
-import React from 'react';
-import Post from './Post';
-import RelatedPosts from './PostList';
-import { Container, Title, Text, Image } from '@mantine/core';
-import {number} from "prop-types";
+import React from 'react'
+import Post from './Post'
+import { Container, Title, Text, Image } from '@mantine/core'
 import classes from './PostDetail.module.css'
+
 interface Post {
     post: {
-        token: string,
-        author: {username: string; email: string};
-        title: string;
+        token: string
+        author: {username: string; email: string}
+        title: string
         agency: {name: string; description: string; image: string}
-        description: string;
-        image: string;
-        created_time: string;
-        categories: {id: number;  title: string}[] };
+        description: string
+        image: string
+        created_time: string
+        categories: {id: number;  title: string}[] }
     reactions: {
-        likes: number;
-        dislikes: number;
+        likes: number
+        dislikes: number
     }
 }
 
@@ -65,4 +62,4 @@ const PostDetail: React.FC<Post> = ({ post, reactions }) => {
     );
 };
 
-export default PostDetail;
+export default PostDetail

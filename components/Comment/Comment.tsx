@@ -1,9 +1,7 @@
 'use client'
-
-
-import {Container, Paper, Avatar, Title, Text, Group, TypographyStylesProvider} from "@mantine/core";
-import React from 'react';
-import classes from './CommentHtml.module.css';
+import {Container, Paper, Avatar, Title, Text, Group, TypographyStylesProvider} from '@mantine/core'
+import React from 'react'
+import classes from './CommentHtml.module.css'
 
 
 interface CommentProps {

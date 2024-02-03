@@ -1,17 +1,17 @@
+'use client'
 import React from 'react';
 import classes from './AgencyProfile.module.css'
 import {Container} from "@mantine/core";
 
 interface AgencyProfileInterface {
     agency: {
-        name: string;
-        description: string;
-        image: string;
+        name: string
+        description: string
+        image: string
     }
-
 }
 
-const AgencyProfile: React.FC<AgencyProfileInterface>  = ({agency}) => {
+const AgencyProfile: React.FC<AgencyProfileInterface>  = ({ agency}) => {
     return (
         <Container>
             <div className={classes.blogWrap}>
@@ -31,4 +31,4 @@ const AgencyProfile: React.FC<AgencyProfileInterface>  = ({agency}) => {
     );
 };
 
-export default AgencyProfile;
+export default AgencyProfile

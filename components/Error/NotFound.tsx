@@ -1,9 +1,7 @@
 'use client'
-
-
-import { Image, Container, Title, Text, Button, SimpleGrid } from '@mantine/core';
-import image from '../../public/NotFound.svg';
-import classes from './NotFound.module.css';
+import { Image, Container, Title, Text, Button, SimpleGrid } from '@mantine/core'
+import image from '../../public/NotFound.svg'
+import classes from './NotFound.module.css'
 
 export function NotFoundImage() {
     return (
@@ -20,7 +18,7 @@ export function NotFoundImage() {
                 <Image src={image.src} className={classes.desktopImage} />
             </SimpleGrid>
         </Container>
-    );
+    )
 }
 
-export default NotFoundImage;
+export default NotFoundImage

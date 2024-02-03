@@ -5,11 +5,11 @@ import Link from 'next/link';
 import {useRouter} from "next/router";
 
 interface PostProps {
-    token: string;
-    author: string;
-    title: string;
-    description: string;
-    image: string;
+    token: string
+    author: string
+    title: string
+    description: string
+    image: string
 }
 
 const Post: React.FC<PostProps> = (post: PostProps) => {
@@ -34,4 +34,5 @@ const Post: React.FC<PostProps> = (post: PostProps) => {
     );
 };
 
-export default Post;
+export default Post
+
