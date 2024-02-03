@@ -6,9 +6,9 @@ import classes from './Agency.module.css';
 
 interface AgencyProps {
     agency: {
-    name: string
-    image: string
-    description: string
+    name: string;
+    image: string;
+    description: string;
     }
 }
 
@@ -51,4 +51,4 @@ const Agency: React.FC<AgencyProps> = ({ agency }) => {
     );
 };
 
-export default Agency
+export default Agency;
