@@ -1,7 +1,19 @@
-import React from 'react';
-import styles from '../../app/styles.module.css'; // Import your CSS module
+import React from 'react'
+import styles from '../../app/styles.module.css' // Import your CSS module
 
-const SimpleNewsElement = ({ imageUrl, username, date, title, summary }) => {
+const SimpleNewsElement = ({
+  imageUrl,
+  username,
+  date,
+  title,
+  summary,
+}: {
+  imageUrl: string
+  username: string
+  date: string
+  title: string
+  summary: string
+}) => {
   return (
     <div className={styles.postContainer}>
       <div className={styles.imageContainer}>
@@ -19,8 +31,7 @@ const SimpleNewsElement = ({ imageUrl, username, date, title, summary }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SimpleNewsElement;
-  
+export default SimpleNewsElement

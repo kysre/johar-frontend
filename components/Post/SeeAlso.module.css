@@ -1,9 +1,8 @@
 .title {
-    font-family: Greycliff CF, var(--mantine-font-family);
-    font-weight: 700;
+  font-family: Greycliff CF, var(--mantine-font-family);
+  font-weight: 700;
 }
 
 .group {
-    border: black;
-
+  border: black;
 }

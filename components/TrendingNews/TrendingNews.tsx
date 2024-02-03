@@ -6,17 +6,17 @@ import {
   Flex,
   Button,
   Space,
-} from "@mantine/core";
-import classes from "./Welcome.module.css";
-import AgencyElementSimple from "../AgencyElement/AgencyElementSimple";
-import styles from "../../app/styles.module.css";
-import "../../app/globals.css";
-import SimpleNewsElement from "./SimpleNewsElement";
+} from '@mantine/core'
+import classes from './Welcome.module.css'
+import AgencyElementSimple from '../AgencyElement/AgencyElementSimple'
+import styles from '../../app/styles.module.css'
+import '../../app/globals.css'
+import SimpleNewsElement from './SimpleNewsElement'
 
 export function TrendingNews() {
   return (
     <div id="TrendingNews">
-      <Container fluid style={{ margin: "50px" }}>
+      <Container fluid style={{ margin: '50px' }}>
         <Title className={styles.title}>Trending News</Title>
         <Space h="sm" />
         <Flex className={styles.flexContainer}>
@@ -44,5 +44,5 @@ export function TrendingNews() {
         </Flex>
       </Container>
     </div>
-  );
+  )
 }
