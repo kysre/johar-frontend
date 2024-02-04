@@ -15,7 +15,7 @@ interface PostProps {
 const Post: React.FC<PostProps> = (post: PostProps) => {
     return (
 
-        <Link href={'http://localhost:3000/news/' + post.token} style={{ textDecoration: 'none', color: 'black' }}>
+        <Link href={'http://localhost:8000/news/' + post.token} style={{ textDecoration: 'none', color: 'black' }}>
             <Container style={{ width: '100%', maxHeight: '300px' }}>
                 <Group style={{ display: 'flex', alignItems: 'flex-start', width:'100%'}}>
                     <div style={{ flex: '0 0 150px', marginRight: 15 }}>
